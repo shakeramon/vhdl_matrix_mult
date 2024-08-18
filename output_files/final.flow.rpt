@@ -1,0 +1,136 @@
+Flow report for final
+Sun Aug 18 14:26:14 2024
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Flow Summary                                                                  ;
++---------------------------------+---------------------------------------------+
+; Flow Status                     ; Successful - Sun Aug 18 14:26:13 2024       ;
+; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                   ; final                                       ;
+; Top-level Entity Name           ; mult_matrices                               ;
+; Family                          ; Cyclone V                                   ;
+; Device                          ; 5CGXFC5C6F27C7                              ;
+; Timing Models                   ; Final                                       ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 861                                         ;
+; Total pins                      ; 40                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 4                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 08/18/2024 14:25:49 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; final               ;
++-------------------+---------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                   ;
++--------------------------------------+----------------------------------------+---------------+---------------+--------------------+
+; Assignment Name                      ; Value                                  ; Default Value ; Entity Name   ; Section Id         ;
++--------------------------------------+----------------------------------------+---------------+---------------+--------------------+
+; COMPILER_SIGNATURE_ID                ; 277848891139155.172398034920420        ; --            ; --            ; --                 ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --            ; matrices_mult_tb   ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --            ; tb_Main_Controller ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; matrices_mult_tb                       ; --            ; --            ; eda_simulation     ;
+; EDA_OUTPUT_DATA_FORMAT               ; Vhdl                                   ; --            ; --            ; eda_simulation     ;
+; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (VHDL)                 ; <None>        ; --            ; --                 ;
+; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                        ; --            ; --            ; eda_simulation     ;
+; EDA_TEST_BENCH_FILE                  ; ../src/matrices_mult_tb.vhd            ; --            ; --            ; matrices_mult_tb   ;
+; EDA_TEST_BENCH_FILE                  ; ../src/tb_Main_Controller.vhd          ; --            ; --            ; tb_Main_Controller ;
+; EDA_TEST_BENCH_MODULE_NAME           ; matrices_mult_tb                       ; --            ; --            ; matrices_mult_tb   ;
+; EDA_TEST_BENCH_MODULE_NAME           ; tb_Main_Controller                     ; --            ; --            ; tb_Main_Controller ;
+; EDA_TEST_BENCH_NAME                  ; tb_Main_Controller                     ; --            ; --            ; eda_simulation     ;
+; EDA_TEST_BENCH_NAME                  ; matrices_mult_tb                       ; --            ; --            ; eda_simulation     ;
+; EDA_TIME_SCALE                       ; 1 ps                                   ; --            ; --            ; eda_simulation     ;
+; ENABLE_SIGNALTAP                     ; On                                     ; --            ; --            ; --                 ;
+; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --            ; --            ; --                 ;
+; MIN_CORE_JUNCTION_TEMP               ; 0                                      ; --            ; --            ; --                 ;
+; PARTITION_COLOR                      ; -- (Not supported for targeted family) ; --            ; mult_matrices ; Top                ;
+; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family) ; --            ; mult_matrices ; Top                ;
+; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family) ; --            ; mult_matrices ; Top                ;
+; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                    ; --            ; --            ; --                 ;
+; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --            ; --                 ;
+; PROJECT_OUTPUT_DIRECTORY             ; output_files                           ; --            ; --            ; --                 ;
+; SMART_RECOMPILE                      ; On                                     ; Off           ; --            ; --                 ;
+; TOP_LEVEL_ENTITY                     ; mult_matrices                          ; final         ; --            ; --                 ;
+; USE_SIGNALTAP_FILE                   ; stp2.stp                               ; --            ; --            ; --                 ;
++--------------------------------------+----------------------------------------+---------------+---------------+--------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:24     ; 1.0                     ; 4875 MB             ; 00:00:22                           ;
+; Total                ; 00:00:24     ; --                      ; --                  ; 00:00:22                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                    ;
++----------------------+------------------+------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++----------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis ; LAPTOP-MDGL4V8F  ; Windows 10 ; 10.0       ; x86_64         ;
++----------------------+------------------+------------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off final -c final
+
+
+

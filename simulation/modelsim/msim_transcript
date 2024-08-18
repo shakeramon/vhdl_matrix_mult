@@ -1,0 +1,549 @@
+# Reading pref.tcl
+# ERROR: No extended dataflow license exists
+# do final_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying C:/intelFPGA/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {C:/Intel/VHDL/FINAL_V5/src/sync_diff.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:29:05 on Aug 18,2024
+# vcom -reportprogress 300 -93 -work work C:/Intel/VHDL/FINAL_V5/src/sync_diff.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity sync_diff
+# -- Compiling architecture behave of sync_diff
+# End time: 14:29:05 on Aug 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/VHDL/FINAL_V5/src/num_convert.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:29:05 on Aug 18,2024
+# vcom -reportprogress 300 -93 -work work C:/Intel/VHDL/FINAL_V5/src/num_convert.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity num_convert
+# -- Compiling architecture behave of num_convert
+# End time: 14:29:06 on Aug 18,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/VHDL/FINAL_V5/src/my_multiplier.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:29:06 on Aug 18,2024
+# vcom -reportprogress 300 -93 -work work C:/Intel/VHDL/FINAL_V5/src/my_multiplier.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity my_multiplier
+# -- Compiling architecture behave of my_multiplier
+# End time: 14:29:06 on Aug 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/VHDL/FINAL_V5/src/matrix_ram.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:29:06 on Aug 18,2024
+# vcom -reportprogress 300 -93 -work work C:/Intel/VHDL/FINAL_V5/src/matrix_ram.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity matrix_ram
+# -- Compiling architecture behave of matrix_ram
+# End time: 14:29:06 on Aug 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/VHDL/FINAL_V5/src/data_generator_pack.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:29:06 on Aug 18,2024
+# vcom -reportprogress 300 -93 -work work C:/Intel/VHDL/FINAL_V5/src/data_generator_pack.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package data_generator_pack
+# End time: 14:29:06 on Aug 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/VHDL/FINAL_V5/src/Components_Pkg.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:29:06 on Aug 18,2024
+# vcom -reportprogress 300 -93 -work work C:/Intel/VHDL/FINAL_V5/src/Components_Pkg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package Components_Pkg
+# -- Compiling package body Components_Pkg
+# -- Loading package Components_Pkg
+# End time: 14:29:06 on Aug 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/VHDL/FINAL_V5/src/bin2bcd_12bit_sync.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:29:06 on Aug 18,2024
+# vcom -reportprogress 300 -93 -work work C:/Intel/VHDL/FINAL_V5/src/bin2bcd_12bit_sync.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity bin2bcd_12bit_sync
+# -- Compiling architecture Behavioral of bin2bcd_12bit_sync
+# End time: 14:29:06 on Aug 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/VHDL/FINAL_V5/src/bcd_to_7seg.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:29:07 on Aug 18,2024
+# vcom -reportprogress 300 -93 -work work C:/Intel/VHDL/FINAL_V5/src/bcd_to_7seg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity bcd_to_7seg
+# -- Compiling architecture behave of bcd_to_7seg
+# End time: 14:29:07 on Aug 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/VHDL/FINAL_V5/src/ALL_Components_Pkg.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:29:07 on Aug 18,2024
+# vcom -reportprogress 300 -93 -work work C:/Intel/VHDL/FINAL_V5/src/ALL_Components_Pkg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package ALL_Components_Pkg
+# End time: 14:29:07 on Aug 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/VHDL/FINAL_V5/src/main_controller.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:29:07 on Aug 18,2024
+# vcom -reportprogress 300 -93 -work work C:/Intel/VHDL/FINAL_V5/src/main_controller.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package Components_Pkg
+# -- Compiling entity Main_Controller
+# -- Compiling architecture Behavioral of Main_Controller
+# -- Loading entity matrix_ram
+# -- Loading entity my_multiplier
+# End time: 14:29:07 on Aug 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/VHDL/FINAL_V5/src/mult_matrices.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:29:07 on Aug 18,2024
+# vcom -reportprogress 300 -93 -work work C:/Intel/VHDL/FINAL_V5/src/mult_matrices.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ALL_Components_Pkg
+# -- Compiling entity mult_matrices
+# -- Compiling architecture Behavioral of mult_matrices
+# End time: 14:29:07 on Aug 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/VHDL/FINAL_V5/src/data_generator.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:29:07 on Aug 18,2024
+# vcom -reportprogress 300 -93 -work work C:/Intel/VHDL/FINAL_V5/src/data_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package data_generator_pack
+# -- Compiling entity data_generator
+# -- Compiling architecture behave of data_generator
+# End time: 14:29:07 on Aug 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {C:/Intel/VHDL/FINAL_V5/par/../src/matrices_mult_tb.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:29:07 on Aug 18,2024
+# vcom -reportprogress 300 -93 -work work C:/Intel/VHDL/FINAL_V5/par/../src/matrices_mult_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity matrices_mult_tb
+# -- Compiling architecture behave of matrices_mult_tb
+# End time: 14:29:07 on Aug 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs="+acc"  matrices_mult_tb
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs=""+acc"" matrices_mult_tb 
+# Start time: 14:29:08 on Aug 18,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.matrices_mult_tb(behave)
+# Loading ieee.numeric_std(body)
+# Loading work.all_components_pkg
+# Loading work.mult_matrices(behavioral)
+# Loading work.sync_diff(behave)
+# Loading work.bin2bcd_12bit_sync(behavioral)
+# Loading work.bcd_to_7seg(behave)
+# Loading work.data_generator_pack
+# Loading work.data_generator(behave)
+# Loading work.components_pkg(body)
+# Loading work.main_controller(behavioral)
+# Loading work.matrix_ram(behave)
+# Loading work.my_multiplier(behave)
+# Loading work.num_convert(behave)
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /matrices_mult_tb/dut/U7/ram_inst
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /matrices_mult_tb/dut/U7/final_ram_inst
+# ** Error: (vsim-111) No digits found in abstract literal.
+#    Time: 100 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Error: (vsim-3546) TEXTIO procedure READ(INTEGER) : Cannot get value from "Sign Value".
+#    Time: 100 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Error: (vsim-111) No digits found in abstract literal.
+#    Time: 100 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Error: (vsim-3546) TEXTIO procedure READ(INTEGER) : Cannot get value from "Sign Value".
+#    Time: 100 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Fail!  Expected=-2147483648    Actual=0
+# 
+#    Time: 700 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Fail!  Expected=-2147483648    Actual=0
+# 
+#    Time: 700 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 1 ms  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 1 ms  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 1300 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 1300 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 1600 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 1600 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 1900 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 1900 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 2200 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 2200 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 2500 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 2500 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 2800 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 2800 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 3100 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 3100 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 3400 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 3400 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 3700 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 3700 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 4 ms  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 4 ms  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 4300 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 4300 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 4600 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 4600 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 4900 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 4900 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 5200 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 5200 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Fail!  Expected=-2147483648    Actual=1528
+# 
+#    Time: 5500 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Fail!  Expected=-2147483648    Actual=0
+# 
+#    Time: 5500 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 5800 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 5800 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Fail!  Expected=1528    Actual=0
+# 
+#    Time: 8800 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 8800 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 9100 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 9100 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 9400 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 9400 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 9700 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 9700 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 10 ms  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 10 ms  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 10300 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 10300 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 10600 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 10600 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 10900 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 10900 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 11200 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 11200 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 11500 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 11500 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 11800 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 11800 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 12100 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 12100 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 12400 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 12400 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 12700 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 12700 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 13 ms  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 13 ms  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 13300 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 13300 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Fail!  Expected=1528    Actual=6993
+# 
+#    Time: 13600 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 13600 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 13900 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 13900 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Fail!  Expected=6993    Actual=0
+# 
+#    Time: 16900 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 16900 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 17200 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 17200 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 17500 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 17500 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 17800 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 17800 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 18100 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 18100 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 18400 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 18400 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 18700 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 18700 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 19 ms  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 19 ms  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 19300 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 19300 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 19600 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 19600 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 19900 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 19900 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 20200 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 20200 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 20500 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 20500 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 20800 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 20800 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 21100 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 21100 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 21400 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 21400 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Fail!  Expected=6993    Actual=6795
+# 
+#    Time: 21700 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 21700 us  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Value Pass
+# 
+#    Time: 22 ms  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Sign Pass
+# 
+#    Time: 22 ms  Iteration: 1  Instance: /matrices_mult_tb
+# ** Note: Total errors: 8
+# 
+#    Time: 22 ms  Iteration: 1  Instance: /matrices_mult_tb
+# ** Failure: End of Simulation
+#    Time: 24400 us  Iteration: 0  Process: /matrices_mult_tb/line__100 File: C:/Intel/VHDL/FINAL_V5/par/../src/matrices_mult_tb.vhd
+# Break in Process line__100 at C:/Intel/VHDL/FINAL_V5/par/../src/matrices_mult_tb.vhd line 134
+# End time: 14:29:53 on Aug 18,2024, Elapsed time: 0:00:45
+# Errors: 5, Warnings: 2

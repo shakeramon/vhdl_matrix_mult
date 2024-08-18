@@ -1,0 +1,697 @@
+Analysis & Synthesis report for final
+Sun Aug 18 14:26:14 2024
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. State Machine - |mult_matrices|Main_Controller:U7|cal_state
+ 10. State Machine - |mult_matrices|Main_Controller:U7|main_state
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: Top-level Entity: |mult_matrices
+ 16. Parameter Settings for User Entity Instance: sync_diff:U_sync_START
+ 17. Parameter Settings for User Entity Instance: sync_diff:U_sync_DISPLAY
+ 18. Parameter Settings for User Entity Instance: Main_Controller:U7
+ 19. Parameter Settings for User Entity Instance: Main_Controller:U7|matrix_ram:final_ram_inst
+ 20. Parameter Settings for User Entity Instance: Main_Controller:U7|matrix_ram:ram_inst
+ 21. Parameter Settings for User Entity Instance: Main_Controller:U7|my_multiplier:\gen_multipliers:0:mult_inst
+ 22. Parameter Settings for User Entity Instance: Main_Controller:U7|my_multiplier:\gen_multipliers:1:mult_inst
+ 23. Parameter Settings for User Entity Instance: Main_Controller:U7|my_multiplier:\gen_multipliers:2:mult_inst
+ 24. Parameter Settings for User Entity Instance: Main_Controller:U7|my_multiplier:\gen_multipliers:3:mult_inst
+ 25. Port Connectivity Checks: "num_convert:U8"
+ 26. Port Connectivity Checks: "Main_Controller:U7|matrix_ram:ram_inst"
+ 27. Port Connectivity Checks: "Main_Controller:U7|matrix_ram:final_ram_inst"
+ 28. Post-Synthesis Netlist Statistics for Top Partition
+ 29. Elapsed Time Per Partition
+ 30. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sun Aug 18 14:26:13 2024       ;
+; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                   ; final                                       ;
+; Top-level Entity Name           ; mult_matrices                               ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 861                                         ;
+; Total pins                      ; 40                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 4                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CGXFC5C6F27C7     ;                    ;
+; Top-level entity name                                                           ; mult_matrices      ; final              ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; On                 ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                              ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                       ; Library ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------+---------+
+; ../src/main_controller.vhd       ; yes             ; User VHDL File  ; C:/Intel/VHDL/FINAL_V5/src/main_controller.vhd     ;         ;
+; ../src/sync_diff.vhd             ; yes             ; User VHDL File  ; C:/Intel/VHDL/FINAL_V5/src/sync_diff.vhd           ;         ;
+; ../src/num_convert.vhd           ; yes             ; User VHDL File  ; C:/Intel/VHDL/FINAL_V5/src/num_convert.vhd         ;         ;
+; ../src/my_multiplier.vhd         ; yes             ; User VHDL File  ; C:/Intel/VHDL/FINAL_V5/src/my_multiplier.vhd       ;         ;
+; ../src/mult_matrices.vhd         ; yes             ; User VHDL File  ; C:/Intel/VHDL/FINAL_V5/src/mult_matrices.vhd       ;         ;
+; ../src/matrix_ram.vhd            ; yes             ; User VHDL File  ; C:/Intel/VHDL/FINAL_V5/src/matrix_ram.vhd          ;         ;
+; ../src/data_generator_pack.vhd   ; yes             ; User VHDL File  ; C:/Intel/VHDL/FINAL_V5/src/data_generator_pack.vhd ;         ;
+; ../src/data_generator.vhd        ; yes             ; User VHDL File  ; C:/Intel/VHDL/FINAL_V5/src/data_generator.vhd      ;         ;
+; ../src/Components_Pkg.vhd        ; yes             ; User VHDL File  ; C:/Intel/VHDL/FINAL_V5/src/Components_Pkg.vhd      ;         ;
+; ../src/bin2bcd_12bit_sync.vhd    ; yes             ; User VHDL File  ; C:/Intel/VHDL/FINAL_V5/src/bin2bcd_12bit_sync.vhd  ;         ;
+; ../src/bcd_to_7seg.vhd           ; yes             ; User VHDL File  ; C:/Intel/VHDL/FINAL_V5/src/bcd_to_7seg.vhd         ;         ;
+; ../src/ALL_Components_Pkg.vhd    ; yes             ; User VHDL File  ; C:/Intel/VHDL/FINAL_V5/src/ALL_Components_Pkg.vhd  ;         ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 735       ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 868       ;
+;     -- 7 input functions                    ; 102       ;
+;     -- 6 input functions                    ; 399       ;
+;     -- 5 input functions                    ; 95        ;
+;     -- 4 input functions                    ; 108       ;
+;     -- <=3 input functions                  ; 164       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 861       ;
+;                                             ;           ;
+; I/O pins                                    ; 40        ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 4         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; CLK~input ;
+; Maximum fan-out                             ; 861       ;
+; Total fan-out                               ; 7446      ;
+; Average fan-out                             ; 4.11      ;
++---------------------------------------------+-----------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                            ;
++----------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node                         ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                          ; Entity Name        ; Library Name ;
++----------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------+--------------------+--------------+
+; |mult_matrices                                     ; 868 (24)            ; 861 (0)                   ; 0                 ; 4          ; 40   ; 0            ; |mult_matrices                                                               ; mult_matrices      ; work         ;
+;    |Main_Controller:U7|                            ; 699 (699)           ; 783 (718)                 ; 0                 ; 4          ; 0    ; 0            ; |mult_matrices|Main_Controller:U7                                            ; Main_Controller    ; work         ;
+;       |my_multiplier:\gen_multipliers:0:mult_inst| ; 0 (0)               ; 17 (17)                   ; 0                 ; 1          ; 0    ; 0            ; |mult_matrices|Main_Controller:U7|my_multiplier:\gen_multipliers:0:mult_inst ; my_multiplier      ; work         ;
+;       |my_multiplier:\gen_multipliers:1:mult_inst| ; 0 (0)               ; 16 (16)                   ; 0                 ; 1          ; 0    ; 0            ; |mult_matrices|Main_Controller:U7|my_multiplier:\gen_multipliers:1:mult_inst ; my_multiplier      ; work         ;
+;       |my_multiplier:\gen_multipliers:2:mult_inst| ; 0 (0)               ; 16 (16)                   ; 0                 ; 1          ; 0    ; 0            ; |mult_matrices|Main_Controller:U7|my_multiplier:\gen_multipliers:2:mult_inst ; my_multiplier      ; work         ;
+;       |my_multiplier:\gen_multipliers:3:mult_inst| ; 0 (0)               ; 16 (16)                   ; 0                 ; 1          ; 0    ; 0            ; |mult_matrices|Main_Controller:U7|my_multiplier:\gen_multipliers:3:mult_inst ; my_multiplier      ; work         ;
+;    |bcd_to_7seg:\gen_7seg:0:U7SEG|                 ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mult_matrices|bcd_to_7seg:\gen_7seg:0:U7SEG                                 ; bcd_to_7seg        ; work         ;
+;    |bcd_to_7seg:\gen_7seg:1:U7SEG|                 ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mult_matrices|bcd_to_7seg:\gen_7seg:1:U7SEG                                 ; bcd_to_7seg        ; work         ;
+;    |bcd_to_7seg:\gen_7seg:2:U7SEG|                 ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mult_matrices|bcd_to_7seg:\gen_7seg:2:U7SEG                                 ; bcd_to_7seg        ; work         ;
+;    |bcd_to_7seg:\gen_7seg:3:U7SEG|                 ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mult_matrices|bcd_to_7seg:\gen_7seg:3:U7SEG                                 ; bcd_to_7seg        ; work         ;
+;    |bin2bcd_12bit_sync:U1|                         ; 66 (66)             ; 36 (36)                   ; 0                 ; 0          ; 0    ; 0            ; |mult_matrices|bin2bcd_12bit_sync:U1                                         ; bin2bcd_12bit_sync ; work         ;
+;    |data_generator:U6|                             ; 33 (33)             ; 17 (17)                   ; 0                 ; 0          ; 0    ; 0            ; |mult_matrices|data_generator:U6                                             ; data_generator     ; work         ;
+;    |num_convert:U8|                                ; 16 (16)             ; 17 (17)                   ; 0                 ; 0          ; 0    ; 0            ; |mult_matrices|num_convert:U8                                                ; num_convert        ; work         ;
+;    |sync_diff:U_sync_DISPLAY|                      ; 1 (1)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |mult_matrices|sync_diff:U_sync_DISPLAY                                      ; sync_diff          ; work         ;
+;    |sync_diff:U_sync_START|                        ; 1 (1)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |mult_matrices|sync_diff:U_sync_START                                        ; sync_diff          ; work         ;
++----------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------+--------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary ;
++-------------------------------+--------------+
+; Statistic                     ; Number Used  ;
++-------------------------------+--------------+
+; Independent 9x9               ; 3            ;
+; Two Independent 18x18         ; 1            ;
+; Total number of DSP blocks    ; 4            ;
+;                               ;              ;
+; Fixed Point Signed Multiplier ; 4            ;
++-------------------------------+--------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------+
+; State Machine - |mult_matrices|Main_Controller:U7|cal_state                         ;
++---------------------+---------------------+--------------------+--------------------+
+; Name                ; cal_state.cal_write ; cal_state.cal_calc ; cal_state.cal_read ;
++---------------------+---------------------+--------------------+--------------------+
+; cal_state.cal_read  ; 0                   ; 0                  ; 0                  ;
+; cal_state.cal_calc  ; 0                   ; 1                  ; 1                  ;
+; cal_state.cal_write ; 1                   ; 0                  ; 1                  ;
++---------------------+---------------------+--------------------+--------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------+
+; State Machine - |mult_matrices|Main_Controller:U7|main_state                                            ;
++-----------------+-----------------+----------------+-----------------+-----------------+----------------+
+; Name            ; main_state.DISP ; main_state.CAL ; main_state.MAT2 ; main_state.MAT1 ; main_state.IDL ;
++-----------------+-----------------+----------------+-----------------+-----------------+----------------+
+; main_state.IDL  ; 0               ; 0              ; 0               ; 0               ; 0              ;
+; main_state.MAT1 ; 0               ; 0              ; 0               ; 1               ; 1              ;
+; main_state.MAT2 ; 0               ; 0              ; 1               ; 0               ; 1              ;
+; main_state.CAL  ; 0               ; 1              ; 0               ; 0               ; 1              ;
+; main_state.DISP ; 1               ; 0              ; 0               ; 0               ; 1              ;
++-----------------+-----------------+----------------+-----------------+-----------------+----------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                      ;
++------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
+; Register name                                                                ; Reason for Removal                                                                       ;
++------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
+; Main_Controller:U7|i[1]                                                      ; Merged with Main_Controller:U7|i[0]                                                      ;
+; Main_Controller:U7|my_multiplier:\gen_multipliers:1:mult_inst|din_valid_d[1] ; Merged with Main_Controller:U7|my_multiplier:\gen_multipliers:0:mult_inst|din_valid_d[1] ;
+; Main_Controller:U7|my_multiplier:\gen_multipliers:2:mult_inst|din_valid_d[1] ; Merged with Main_Controller:U7|my_multiplier:\gen_multipliers:0:mult_inst|din_valid_d[1] ;
+; Main_Controller:U7|my_multiplier:\gen_multipliers:3:mult_inst|din_valid_d[1] ; Merged with Main_Controller:U7|my_multiplier:\gen_multipliers:0:mult_inst|din_valid_d[1] ;
+; Main_Controller:U7|mult_din_valid[1..3]                                      ; Merged with Main_Controller:U7|mult_din_valid[0]                                         ;
+; Main_Controller:U7|i[0]                                                      ; Stuck at GND due to stuck port data_in                                                   ;
+; Main_Controller:U7|cal_state.cal_read                                        ; Lost fanout                                                                              ;
+; Total Number of Removed Registers = 9                                        ;                                                                                          ;
++------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 861   ;
+; Number of registers using Synchronous Clear  ; 283   ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 83    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 778   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; Main_Controller:U7|j[4]                ; 37      ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |mult_matrices|Main_Controller:U7|delay_counter[0]   ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |mult_matrices|data_generator:U6|elements_count[1]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[0][5]    ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[1][3]    ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[2][7]    ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[3][4]    ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[4][4]    ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[5][7]    ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[6][5]    ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[7][6]    ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[8][4]    ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[9][0]    ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[10][0]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[11][4]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[12][3]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[13][6]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[14][2]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[15][2]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[16][1]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[17][2]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[18][1]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[19][7]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[20][3]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[21][5]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[22][2]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[23][5]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[24][2]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[25][7]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[26][0]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[27][1]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[28][7]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[29][1]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[30][1]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|cal_array[31][3]   ;
+; 7:1                ; 5 bits    ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |mult_matrices|Main_Controller:U7|address_counter[2] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |mult_matrices|Main_Controller:U7|cal_state          ;
+; 4:1                ; 64 bits   ; 128 LEs       ; 128 LEs              ; 0 LEs                  ; No         ; |mult_matrices|Main_Controller:U7|Mux50              ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |mult_matrices|Main_Controller:U7|result_mat_place   ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |mult_matrices|Main_Controller:U7|Mux11              ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |mult_matrices|Main_Controller:U7|b                  ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |mult_matrices|Main_Controller:U7|b                  ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |mult_matrices|Main_Controller:U7|b                  ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |mult_matrices|Main_Controller:U7|b                  ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 15 LEs               ; 0 LEs                  ; No         ; |mult_matrices|Main_Controller:U7|DISPLAY_COUNT      ;
+; 17:1               ; 8 bits    ; 88 LEs        ; 88 LEs               ; 0 LEs                  ; No         ; |mult_matrices|Main_Controller:U7|a                  ;
+; 17:1               ; 8 bits    ; 88 LEs        ; 88 LEs               ; 0 LEs                  ; No         ; |mult_matrices|Main_Controller:U7|a                  ;
+; 6:1                ; 31 bits   ; 124 LEs       ; 62 LEs               ; 62 LEs                 ; No         ; |mult_matrices|Main_Controller:U7|j                  ;
+; 6:1                ; 29 bits   ; 116 LEs       ; 58 LEs               ; 58 LEs                 ; No         ; |mult_matrices|Main_Controller:U7|i                  ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |mult_matrices|Main_Controller:U7|Selector531        ;
+; 11:1               ; 8 bits    ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; No         ; |mult_matrices|Main_Controller:U7|a                  ;
+; 11:1               ; 8 bits    ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; No         ; |mult_matrices|Main_Controller:U7|a                  ;
+; 10:1               ; 3 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; No         ; |mult_matrices|Main_Controller:U7|Selector525        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |mult_matrices ;
++------------------------+-------+----------------------------------------------+
+; Parameter Name         ; Value ; Type                                         ;
++------------------------+-------+----------------------------------------------+
+; G_DERIVATE_RISING_EDGE ; true  ; Enumerated                                   ;
+; G_SIG_IN_INIT_VALUE    ; '0'   ; Enumerated                                   ;
+; G_RESET_ACTIVE_VALUE   ; '0'   ; Enumerated                                   ;
++------------------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: sync_diff:U_sync_START ;
++------------------------+-------+------------------------------------+
+; Parameter Name         ; Value ; Type                               ;
++------------------------+-------+------------------------------------+
+; g_derivate_rising_edge ; true  ; Enumerated                         ;
+; g_sig_in_init_value    ; '0'   ; Enumerated                         ;
+; g_reset_active_value   ; '1'   ; Enumerated                         ;
++------------------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: sync_diff:U_sync_DISPLAY ;
++------------------------+-------+--------------------------------------+
+; Parameter Name         ; Value ; Type                                 ;
++------------------------+-------+--------------------------------------+
+; g_derivate_rising_edge ; true  ; Enumerated                           ;
+; g_sig_in_init_value    ; '0'   ; Enumerated                           ;
+; g_reset_active_value   ; '1'   ; Enumerated                           ;
++------------------------+-------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Main_Controller:U7 ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; data_width     ; 8     ; Signed Integer                         ;
+; address_bits   ; 5     ; Signed Integer                         ;
+; matrix_size    ; 4     ; Signed Integer                         ;
+; n              ; 8     ; Signed Integer                         ;
+; latency        ; 1     ; Signed Integer                         ;
+; is_signed      ; true  ; Enumerated                             ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Main_Controller:U7|matrix_ram:final_ram_inst ;
++----------------+-------+------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                             ;
++----------------+-------+------------------------------------------------------------------+
+; data_width     ; 24    ; Signed Integer                                                   ;
+; address_bits   ; 5     ; Signed Integer                                                   ;
++----------------+-------+------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Main_Controller:U7|matrix_ram:ram_inst ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; data_width     ; 8     ; Signed Integer                                             ;
+; address_bits   ; 5     ; Signed Integer                                             ;
++----------------+-------+------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Main_Controller:U7|my_multiplier:\gen_multipliers:0:mult_inst ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; n              ; 8     ; Signed Integer                                                                    ;
+; latency        ; 1     ; Signed Integer                                                                    ;
+; is_signed      ; true  ; Enumerated                                                                        ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Main_Controller:U7|my_multiplier:\gen_multipliers:1:mult_inst ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; n              ; 8     ; Signed Integer                                                                    ;
+; latency        ; 1     ; Signed Integer                                                                    ;
+; is_signed      ; true  ; Enumerated                                                                        ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Main_Controller:U7|my_multiplier:\gen_multipliers:2:mult_inst ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; n              ; 8     ; Signed Integer                                                                    ;
+; latency        ; 1     ; Signed Integer                                                                    ;
+; is_signed      ; true  ; Enumerated                                                                        ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Main_Controller:U7|my_multiplier:\gen_multipliers:3:mult_inst ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; n              ; 8     ; Signed Integer                                                                    ;
+; latency        ; 1     ; Signed Integer                                                                    ;
+; is_signed      ; true  ; Enumerated                                                                        ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "num_convert:U8"  ;
++-----------+-------+----------+--------------+
+; Port      ; Type  ; Severity ; Details      ;
++-----------+-------+----------+--------------+
+; din_valid ; Input ; Info     ; Stuck at VCC ;
++-----------+-------+----------+--------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Main_Controller:U7|matrix_ram:ram_inst"                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Main_Controller:U7|matrix_ram:final_ram_inst"                                               ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; data[23..17] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; q            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 861                         ;
+;     CLR               ; 46                          ;
+;     ENA               ; 485                         ;
+;     ENA CLR           ; 10                          ;
+;     ENA CLR SCLR      ; 27                          ;
+;     ENA SCLR          ; 256                         ;
+;     plain             ; 37                          ;
+; arriav_lcell_comb     ; 869                         ;
+;     arith             ; 101                         ;
+;         1 data inputs ; 67                          ;
+;         2 data inputs ; 34                          ;
+;     extend            ; 102                         ;
+;         7 data inputs ; 102                         ;
+;     normal            ; 649                         ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 10                          ;
+;         3 data inputs ; 36                          ;
+;         4 data inputs ; 108                         ;
+;         5 data inputs ; 95                          ;
+;         6 data inputs ; 399                         ;
+;     shared            ; 17                          ;
+;         3 data inputs ; 17                          ;
+; arriav_mac            ; 4                           ;
+; boundary_port         ; 40                          ;
+;                       ;                             ;
+; Max LUT depth         ; 6.00                        ;
+; Average LUT depth     ; 3.07                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:05     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Sun Aug 18 14:25:49 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off final -c final
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file /intel/vhdl/final_v5/src/main_controller.vhd
+    Info (12022): Found design unit 1: Main_Controller-Behavioral File: C:/Intel/VHDL/FINAL_V5/src/main_controller.vhd Line: 32
+    Info (12023): Found entity 1: Main_Controller File: C:/Intel/VHDL/FINAL_V5/src/main_controller.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file /intel/vhdl/final_v5/src/tb_main_controller.vhd
+    Info (12022): Found design unit 1: tb_Main_Controller-Behavioral File: C:/Intel/VHDL/FINAL_V5/src/tb_Main_Controller.vhd Line: 8
+    Info (12023): Found entity 1: tb_Main_Controller File: C:/Intel/VHDL/FINAL_V5/src/tb_Main_Controller.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /intel/vhdl/final_v5/src/sync_diff.vhd
+    Info (12022): Found design unit 1: sync_diff-behave File: C:/Intel/VHDL/FINAL_V5/src/sync_diff.vhd Line: 18
+    Info (12023): Found entity 1: sync_diff File: C:/Intel/VHDL/FINAL_V5/src/sync_diff.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file /intel/vhdl/final_v5/src/num_convert.vhd
+    Info (12022): Found design unit 1: num_convert-behave File: C:/Intel/VHDL/FINAL_V5/src/num_convert.vhd Line: 16
+    Info (12023): Found entity 1: num_convert File: C:/Intel/VHDL/FINAL_V5/src/num_convert.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /intel/vhdl/final_v5/src/my_multiplier_tb.vhd
+    Info (12022): Found design unit 1: my_multiplier_tb-behave File: C:/Intel/VHDL/FINAL_V5/src/my_multiplier_tb.vhd Line: 9
+    Info (12023): Found entity 1: my_multiplier_tb File: C:/Intel/VHDL/FINAL_V5/src/my_multiplier_tb.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /intel/vhdl/final_v5/src/my_multiplier.vhd
+    Info (12022): Found design unit 1: my_multiplier-behave File: C:/Intel/VHDL/FINAL_V5/src/my_multiplier.vhd Line: 21
+    Info (12023): Found entity 1: my_multiplier File: C:/Intel/VHDL/FINAL_V5/src/my_multiplier.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /intel/vhdl/final_v5/src/mult_matrices.vhd
+    Info (12022): Found design unit 1: mult_matrices-Behavioral File: C:/Intel/VHDL/FINAL_V5/src/mult_matrices.vhd Line: 29
+    Info (12023): Found entity 1: mult_matrices File: C:/Intel/VHDL/FINAL_V5/src/mult_matrices.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file /intel/vhdl/final_v5/src/matrix_ram_tb.vhd
+    Info (12022): Found design unit 1: matrix_ram_tb-behave File: C:/Intel/VHDL/FINAL_V5/src/matrix_ram_tb.vhd Line: 10
+    Info (12023): Found entity 1: matrix_ram_tb File: C:/Intel/VHDL/FINAL_V5/src/matrix_ram_tb.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file /intel/vhdl/final_v5/src/matrix_ram.vhd
+    Info (12022): Found design unit 1: matrix_ram-behave File: C:/Intel/VHDL/FINAL_V5/src/matrix_ram.vhd Line: 21
+    Info (12023): Found entity 1: matrix_ram File: C:/Intel/VHDL/FINAL_V5/src/matrix_ram.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /intel/vhdl/final_v5/src/matrices_mult_tb.vhd
+    Info (12022): Found design unit 1: matrices_mult_tb-behave File: C:/Intel/VHDL/FINAL_V5/src/matrices_mult_tb.vhd Line: 11
+    Info (12023): Found entity 1: matrices_mult_tb File: C:/Intel/VHDL/FINAL_V5/src/matrices_mult_tb.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file /intel/vhdl/final_v5/src/data_generator_tb.vhd
+    Info (12022): Found design unit 1: data_generator_tb-sim File: C:/Intel/VHDL/FINAL_V5/src/data_generator_tb.vhd Line: 11
+    Info (12023): Found entity 1: data_generator_tb File: C:/Intel/VHDL/FINAL_V5/src/data_generator_tb.vhd Line: 8
+Info (12021): Found 1 design units, including 0 entities, in source file /intel/vhdl/final_v5/src/data_generator_pack.vhd
+    Info (12022): Found design unit 1: data_generator_pack File: C:/Intel/VHDL/FINAL_V5/src/data_generator_pack.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file /intel/vhdl/final_v5/src/data_generator.vhd
+    Info (12022): Found design unit 1: data_generator-behave File: C:/Intel/VHDL/FINAL_V5/src/data_generator.vhd Line: 19
+    Info (12023): Found entity 1: data_generator File: C:/Intel/VHDL/FINAL_V5/src/data_generator.vhd Line: 9
+Info (12021): Found 2 design units, including 0 entities, in source file /intel/vhdl/final_v5/src/components_pkg.vhd
+    Info (12022): Found design unit 1: Components_Pkg File: C:/Intel/VHDL/FINAL_V5/src/Components_Pkg.vhd Line: 5
+    Info (12022): Found design unit 2: Components_Pkg-body File: C:/Intel/VHDL/FINAL_V5/src/Components_Pkg.vhd Line: 63
+Info (12021): Found 2 design units, including 1 entities, in source file /intel/vhdl/final_v5/src/bin2bcd_12bit_sync_tb.vhd
+    Info (12022): Found design unit 1: bin2bcd_12bit_sync_tb-sim File: C:/Intel/VHDL/FINAL_V5/src/bin2bcd_12bit_sync_tb.vhd Line: 9
+    Info (12023): Found entity 1: bin2bcd_12bit_sync_tb File: C:/Intel/VHDL/FINAL_V5/src/bin2bcd_12bit_sync_tb.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /intel/vhdl/final_v5/src/bin2bcd_12bit_sync.vhd
+    Info (12022): Found design unit 1: bin2bcd_12bit_sync-Behavioral File: C:/Intel/VHDL/FINAL_V5/src/bin2bcd_12bit_sync.vhd Line: 27
+    Info (12023): Found entity 1: bin2bcd_12bit_sync File: C:/Intel/VHDL/FINAL_V5/src/bin2bcd_12bit_sync.vhd Line: 15
+Info (12021): Found 2 design units, including 1 entities, in source file /intel/vhdl/final_v5/src/bcd_to_7seg.vhd
+    Info (12022): Found design unit 1: bcd_to_7seg-behave File: C:/Intel/VHDL/FINAL_V5/src/bcd_to_7seg.vhd Line: 12
+    Info (12023): Found entity 1: bcd_to_7seg File: C:/Intel/VHDL/FINAL_V5/src/bcd_to_7seg.vhd Line: 5
+Info (12021): Found 1 design units, including 0 entities, in source file /intel/vhdl/final_v5/src/all_components_pkg.vhd
+    Info (12022): Found design unit 1: ALL_Components_Pkg File: C:/Intel/VHDL/FINAL_V5/src/ALL_Components_Pkg.vhd Line: 5
+Info (12127): Elaborating entity "mult_matrices" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at mult_matrices.vhd(54): object "inv_DISPLAYn" assigned a value but never read File: C:/Intel/VHDL/FINAL_V5/src/mult_matrices.vhd Line: 54
+Info (12128): Elaborating entity "sync_diff" for hierarchy "sync_diff:U_sync_START" File: C:/Intel/VHDL/FINAL_V5/src/mult_matrices.vhd Line: 66
+Info (12128): Elaborating entity "bin2bcd_12bit_sync" for hierarchy "bin2bcd_12bit_sync:U1" File: C:/Intel/VHDL/FINAL_V5/src/mult_matrices.vhd Line: 93
+Info (12128): Elaborating entity "bcd_to_7seg" for hierarchy "bcd_to_7seg:\gen_7seg:0:U7SEG" File: C:/Intel/VHDL/FINAL_V5/src/mult_matrices.vhd Line: 106
+Info (12128): Elaborating entity "data_generator" for hierarchy "data_generator:U6" File: C:/Intel/VHDL/FINAL_V5/src/mult_matrices.vhd Line: 121
+Info (12128): Elaborating entity "Main_Controller" for hierarchy "Main_Controller:U7" File: C:/Intel/VHDL/FINAL_V5/src/mult_matrices.vhd Line: 131
+Warning (10036): Verilog HDL or VHDL warning at main_controller.vhd(36): object "cal_counter" assigned a value but never read File: C:/Intel/VHDL/FINAL_V5/src/main_controller.vhd Line: 36
+Warning (10036): Verilog HDL or VHDL warning at main_controller.vhd(39): object "clock_count" assigned a value but never read File: C:/Intel/VHDL/FINAL_V5/src/main_controller.vhd Line: 39
+Warning (10036): Verilog HDL or VHDL warning at main_controller.vhd(59): object "ram_q" assigned a value but never read File: C:/Intel/VHDL/FINAL_V5/src/main_controller.vhd Line: 59
+Warning (10036): Verilog HDL or VHDL warning at main_controller.vhd(66): object "final_ram_q" assigned a value but never read File: C:/Intel/VHDL/FINAL_V5/src/main_controller.vhd Line: 66
+Warning (10036): Verilog HDL or VHDL warning at main_controller.vhd(85): object "integer_matrix" assigned a value but never read File: C:/Intel/VHDL/FINAL_V5/src/main_controller.vhd Line: 85
+Warning (10036): Verilog HDL or VHDL warning at main_controller.vhd(86): object "from_disply_START" assigned a value but never read File: C:/Intel/VHDL/FINAL_V5/src/main_controller.vhd Line: 86
+Info (12128): Elaborating entity "matrix_ram" for hierarchy "Main_Controller:U7|matrix_ram:final_ram_inst" File: C:/Intel/VHDL/FINAL_V5/src/main_controller.vhd Line: 94
+Warning (11000): VHDL warning at matrix_ram.vhd(25): can't infer memory for variable 'mem_array' with attribute '"M10K"'. File: C:/Intel/VHDL/FINAL_V5/src/matrix_ram.vhd Line: 25
+Info (12128): Elaborating entity "matrix_ram" for hierarchy "Main_Controller:U7|matrix_ram:ram_inst" File: C:/Intel/VHDL/FINAL_V5/src/main_controller.vhd Line: 108
+Warning (11000): VHDL warning at matrix_ram.vhd(25): can't infer memory for variable 'mem_array' with attribute '"M10K"'. File: C:/Intel/VHDL/FINAL_V5/src/matrix_ram.vhd Line: 25
+Info (12128): Elaborating entity "my_multiplier" for hierarchy "Main_Controller:U7|my_multiplier:\gen_multipliers:0:mult_inst" File: C:/Intel/VHDL/FINAL_V5/src/main_controller.vhd Line: 125
+Info (12128): Elaborating entity "num_convert" for hierarchy "num_convert:U8" File: C:/Intel/VHDL/FINAL_V5/src/mult_matrices.vhd Line: 158
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "Main_Controller:U7|matrix" is uninferred due to asynchronous read logic File: C:/Intel/VHDL/FINAL_V5/src/main_controller.vhd Line: 84
+Warning (113028): 15 out of 32 addresses are uninitialized. The Quartus Prime software will initialize them to "0". There are 1 warnings found, and 1 warnings are reported. File: C:/Intel/VHDL/FINAL_V5/par/db/final.ram0_Main_Controller_81642bf4.hdl.mif Line: 1
+    Warning (113027): Addresses ranging from 17 to 31 are not initialized File: C:/Intel/VHDL/FINAL_V5/par/db/final.ram0_Main_Controller_81642bf4.hdl.mif Line: 1
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LEDG[1]" is stuck at VCC File: C:/Intel/VHDL/FINAL_V5/src/mult_matrices.vhd Line: 25
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 1 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1547 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 36 output pins
+    Info (21061): Implemented 1503 logic cells
+    Info (21062): Implemented 4 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 14 warnings
+    Info: Peak virtual memory: 4875 megabytes
+    Info: Processing ended: Sun Aug 18 14:26:14 2024
+    Info: Elapsed time: 00:00:25
+    Info: Total CPU time (on all processors): 00:00:22
+
+
