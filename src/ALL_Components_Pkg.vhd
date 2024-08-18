@@ -1,0 +1,91 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+package ALL_Components_Pkg is
+
+    -- Component declaration for bcd_to_7seg
+    component bcd_to_7seg is
+        port(
+            BCD_IN      : in  std_logic_vector(3 downto 0);
+            SHUTDOWNn   : in  std_logic;
+            D_OUT       : out std_logic_vector(6 downto 0)
+        );
+    end component;
+
+    -- Component declaration for bin2bcd_12bit_sync
+    component bin2bcd_12bit_sync is
+        port (
+            binIN           : in  std_logic_vector(15 downto 0);
+            ones            : out std_logic_vector(3 downto 0);
+            tenths          : out std_logic_vector(3 downto 0);
+            hunderths       : out std_logic_vector(3 downto 0);
+            thousands       : out std_logic_vector(3 downto 0);
+            tensofthousands : out std_logic_vector(3 downto 0);
+            CLK             : in  std_logic
+        );
+    end component;
+
+    -- Component declaration for data_generator
+    component data_generator is
+        port (
+            CLK             : in  std_logic;
+            RST             : in  std_logic;
+            DATA_REQUEST    : in  std_logic;
+            DOUT            : out std_logic_vector(7 downto 0);
+            DOUT_VALID      : out std_logic
+        );
+    end component;
+
+    -- Updated Component declaration for Main_Controller
+    component Main_Controller is
+        generic (
+            DATA_WIDTH      : integer := 8;
+            ADDRESS_BITS    : integer := 5;  -- Adjusted as per your main design
+            MATRIX_SIZE     : integer := 4;
+            N               : integer := 8;
+            LATENCY         : integer range 1 to 8 := 1;
+            IS_SIGNED       : boolean := true
+        );
+        port (
+            CLK             : in  std_logic;
+            RST             : in  std_logic;
+            START           : in  std_logic;
+            DISPLAY         : in  std_logic;
+            DIN             : in  std_logic_vector(DATA_WIDTH-1 downto 0);
+            DIN_VALID       : in  std_logic;
+            RESULT          : out std_logic_vector(2*DATA_WIDTH downto 0);  -- Adjusted as per your main design
+            DATA_REQUEST    : out std_logic;
+            RESULT_READY    : out std_logic;
+            GOT_ALL_MATRICES: out std_logic
+        );
+    end component;
+
+    -- Component declaration for num_convert
+    component num_convert is
+        port (
+            CLK             : in  std_logic;  
+            RST             : in  std_logic;
+            DIN             : in  std_logic_vector(16 downto 0);
+            DIN_VALID       : in  std_logic;
+            DOUT            : out std_logic_vector(15 downto 0);
+            SIGN            : out std_logic
+        );
+    end component;
+
+    -- Component declaration for sync_diff
+    component sync_diff is
+        generic (
+            G_DERIVATE_RISING_EDGE  : boolean := true;
+            G_SIG_IN_INIT_VALUE     : std_logic := '0';
+            G_RESET_ACTIVE_VALUE    : std_logic := '0'
+        );
+        port (
+            CLK             : in  std_logic;  
+            RST             : in  std_logic;  
+            SIG_IN          : in  std_logic;  
+            SIG_OUT         : out std_logic   
+        );
+    end component;
+
+end package;

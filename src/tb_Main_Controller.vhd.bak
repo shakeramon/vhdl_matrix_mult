@@ -1,0 +1,118 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity tb_Main_Controller is
+end tb_Main_Controller;
+
+architecture Behavioral of tb_Main_Controller is
+    constant DATA_WIDTH   : integer := 8;
+    constant ADDRESS_BITS : integer := 6;
+    constant CLK_PERIOD   : time := 10 ns;
+
+    signal CLK            : std_logic := '0';
+    signal RST            : std_logic := '0';
+    signal START          : std_logic := '0';
+    signal DISPLAY        : std_logic := '0';
+    signal DIN            : std_logic_vector(DATA_WIDTH-1 downto 0) := (others => '0');
+    signal DIN_VALID      : std_logic := '0';
+    signal RESULT         : std_logic_vector(2*DATA_WIDTH-1 downto 0);
+    signal DATA_REQUEST   : std_logic;
+    signal RESULT_READY   : std_logic;
+    signal GOT_ALL_MATRICES : std_logic;
+
+    component Main_Controller is
+        generic (
+            DATA_WIDTH      : integer := 8;
+            ADDRESS_BITS    : integer := 6;
+            MATRIX_SIZE     : integer := 4;
+            N               : integer := 8;
+            LATENCY         : integer range 1 to 8 := 1;
+            IS_SIGNED       : boolean := true
+        );
+        port (
+            CLK             : in  std_logic;
+            RST             : in  std_logic;
+            START           : in  std_logic;
+            DISPLAY         : in  std_logic;
+            DIN             : in  std_logic_vector(DATA_WIDTH-1 downto 0);
+            DIN_VALID       : in  std_logic;
+            RESULT          : out std_logic_vector(2*DATA_WIDTH-1 downto 0);
+            DATA_REQUEST    : out std_logic;
+            RESULT_READY    : out std_logic;
+            GOT_ALL_MATRICES: out std_logic
+        );
+    end component;
+
+begin
+    DUT: Main_Controller
+        generic map (
+            DATA_WIDTH => DATA_WIDTH,
+            ADDRESS_BITS => ADDRESS_BITS
+        )
+        port map (
+            CLK => CLK,
+            RST => RST,
+            START => START,
+            DISPLAY => DISPLAY,
+            DIN => DIN,
+            DIN_VALID => DIN_VALID,
+            RESULT => RESULT,
+            DATA_REQUEST => DATA_REQUEST,
+            RESULT_READY => RESULT_READY,
+            GOT_ALL_MATRICES => GOT_ALL_MATRICES
+        );
+
+    CLK_PROCESS: process
+    begin
+        while true loop
+            CLK <= '0';
+            wait for CLK_PERIOD / 2;
+            CLK <= '1';
+            wait for CLK_PERIOD / 2;
+        end loop;
+    end process;
+
+    STIMULUS: process
+    begin
+        RST <= '1';
+        wait for 2 * CLK_PERIOD;
+        RST <= '0';
+        wait for 2 * CLK_PERIOD;
+
+        START <= '1';
+        wait for CLK_PERIOD;
+        START <= '0';
+
+        DIN_VALID <= '1';
+        for i in 0 to 15 loop
+            DIN <= std_logic_vector(to_unsigned(i, DATA_WIDTH));
+            wait for CLK_PERIOD;
+        end loop;
+
+        DIN_VALID <= '0';
+        wait for 2 * CLK_PERIOD;
+
+        DIN_VALID <= '1';
+        for i in 16 to 31 loop
+            DIN <= std_logic_vector(to_unsigned(i, DATA_WIDTH));
+            wait for CLK_PERIOD;
+        end loop;
+
+        DIN_VALID <= '0';
+        wait for 2 * CLK_PERIOD;
+		   START <= '1';
+
+        --wait until RESULT_READY = '1';
+        --assert false report "Computation complete, result: " & integer'image(to_integer(unsigned(RESULT))) severity note;
+			   while true loop
+					DISPLAY <= '1';
+					wait for CLK_PERIOD;
+					DISPLAY <= '0';
+            wait for CLK_PERIOD;
+        end loop;
+
+
+        wait;
+    end process;
+end Behavioral;

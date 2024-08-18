@@ -1,0 +1,313 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use work.Components_Pkg.all;
+
+entity Main_Controller is
+    generic (
+        DATA_WIDTH      : integer := 8;
+        ADDRESS_BITS    : integer := 5;
+        MATRIX_SIZE     : integer := 4;
+        N               : integer := 8;
+        LATENCY         : integer range 1 to 8 := 1;
+        IS_SIGNED       : boolean := true
+    );
+    port (
+        CLK             : in  std_logic;
+        RST             : in  std_logic;
+        START           : in  std_logic;
+        DISPLAY         : in  std_logic;
+        DIN             : in  std_logic_vector(DATA_WIDTH-1 downto 0);
+        DIN_VALID       : in  std_logic;
+        RESULT          : out std_logic_vector(2*DATA_WIDTH downto 0); -- 24 bits or 3 * DATA_WIDTH
+        DATA_REQUEST    : out std_logic;
+        RESULT_READY    : out std_logic;
+        GOT_ALL_MATRICES: out std_logic
+    );
+end entity;
+
+architecture Behavioral of Main_Controller is
+
+    -- State types
+    type state_type1 is (IDL, MAT1, MAT2, CAL, DISP);
+    type state_type2 is (cal_read, cal_calc, cal_write);
+
+    -- Internal signals
+    signal result_mat_place   : integer range 0 to 16 := 0;
+    signal cal_state          : state_type2 := cal_read;
+    signal main_state         : state_type1 := IDL;
+    signal done               : std_logic := '0';
+    signal matrix_index       : std_logic_vector(2*DATA_WIDTH downto 0) := (others => '0');
+    signal DISPLAY_COUNT      : integer range 0 to 16 := 0;
+    signal address_counter    : integer range 0 to 32 := 0;
+    signal cal_counter        : integer range 0 to 63 := 0;
+    signal temp               : integer := 4;
+    signal i, j               : integer := 0;
+
+    -- RAM-related signals
+    signal ram_data           : std_logic_vector(DATA_WIDTH-1 downto 0) := (others => '0');
+    signal ram_wren           : std_logic := '0';
+    signal ram_address        : std_logic_vector(ADDRESS_BITS-1 downto 0) := (others => '0');
+    signal ram_byteena        : std_logic_vector(DATA_WIDTH/8-1 downto 0) := (others => '0');
+    signal ram_q              : std_logic_vector(DATA_WIDTH-1 downto 0);
+    signal final_ram_data     : std_logic_vector(3*DATA_WIDTH-1 downto 0) := (others => '0');
+    signal final_ram_wren     : std_logic := '0';
+    signal final_ram_address  : std_logic_vector(ADDRESS_BITS-1 downto 0) := (others => '0');
+    signal final_ram_byteena  : std_logic_vector((3*DATA_WIDTH)/8-1 downto 0) := (others => '0');
+    signal final_ram_q        : std_logic_vector(3*DATA_WIDTH-1 downto 0);
+
+    -- Multiplier-related signals
+    type data_array is array (0 to 3) of std_logic_vector(DATA_WIDTH-1 downto 0);
+    type result_array is array (0 to 3) of std_logic_vector(2*DATA_WIDTH-1 downto 0);
+    type valid_array is array (0 to 3) of std_logic;
+
+    signal a, b               : data_array := (others => (others => '0'));
+    signal mult_result        : result_array := (others => (others => '0'));
+    signal mult_din_valid     : valid_array := (others => '1');
+    signal mult_dout_valid    : valid_array := (others => '0');
+
+    -- Calculation array signals
+    type byte_array is array (0 to 63) of std_logic_vector(DATA_WIDTH-1 downto 0);
+    type matrix_indexes is array (0 to 15) of std_logic_vector(DATA_WIDTH*2 downto 0);
+    signal matrix : matrix_indexes := (others => (others => '0')); 
+    signal cal_array          : byte_array := (others => (others => '0'));
+    signal clock_count : integer :=0;
+
+begin
+
+    -- RAM instance
+    ram_inst: entity work.matrix_ram
+        generic map (
+            DATA_WIDTH => DATA_WIDTH,
+            ADDRESS_BITS => ADDRESS_BITS
+        )
+        port map (
+            CLK => CLK,
+            RST => RST,
+            DATA => ram_data,
+            WREN => ram_wren,
+            ADDRESS => ram_address,
+            BYTEENA => ram_byteena,
+            Q => ram_q
+        );
+
+    -- Final RAM instance
+    final_ram_inst: entity work.matrix_ram
+        generic map (
+            DATA_WIDTH => 3*DATA_WIDTH,
+            ADDRESS_BITS => ADDRESS_BITS
+        )
+        port map (
+            CLK => CLK,
+            RST => RST,
+            DATA => final_ram_data,
+            WREN => final_ram_wren,
+            ADDRESS => final_ram_address,
+            BYTEENA => final_ram_byteena,
+            Q => final_ram_q
+        );
+
+    -- Multipliers generation
+    gen_multipliers: for i in 0 to 3 generate
+        mult_inst: entity work.my_multiplier
+            generic map(
+                N => N,
+                LATENCY => LATENCY,
+                IS_SIGNED => IS_SIGNED
+            )
+            port map (
+                CLK => CLK,
+                DIN_VALID => mult_din_valid(i),
+                A => a(i),
+                B => b(i),
+                Q => mult_result(i),
+                DOUT_VALID => mult_dout_valid(i)
+            );
+    end generate;
+
+    -- Main process
+    process (CLK, RST)
+    begin
+        if RST = '1' then
+            -- Reset logic
+            main_state <= IDL;
+            cal_counter <= 0;
+            done <= '0';
+            ram_wren <= '0';
+            final_ram_wren <= '0';
+            address_counter <= 0;
+            RESULT <= (others => '0');
+            DATA_REQUEST <= '0';
+            GOT_ALL_MATRICES <= '0';
+            j <= 16;
+            i <= 0;
+            result_mat_place   <= 0;
+            DISPLAY_COUNT <= 0;
+            clock_count <= 0;
+        elsif rising_edge(CLK) then
+            case main_state is
+                when IDL =>
+                    -- Reset all signals in IDL state
+                    result_mat_place   <= 0;
+                    cal_state          <= cal_read;
+                    done               <= '0';
+                    matrix_index       <= (others => '0');
+                    DISPLAY_COUNT      <= 0;
+                    address_counter    <= 0;
+                    cal_counter        <= 0;
+                    temp               <= 4;
+                    i                  <= 0;
+                    j                  <= 16;
+                    ram_data           <= (others => '0');
+                    ram_wren           <= '0';
+                    ram_address        <= (others => '0');
+                    ram_byteena        <= (others => '0');
+                    final_ram_data     <= (others => '0');
+                    final_ram_wren     <= '0';
+                    final_ram_address  <= (others => '0');
+                    final_ram_byteena  <= (others => '1');
+                    a                  <= (others => (others => '0'));
+                    b                  <= (others => (others => '0'));
+                    mult_din_valid     <= (others => '0');
+                    cal_array          <= (others => (others => '0'));
+                    clock_count <= 0;
+                    DATA_REQUEST <= '0';
+                    GOT_ALL_MATRICES <= '0';
+
+                    if START = '1' then
+                        main_state <= MAT1;
+                        DATA_REQUEST <= '1';
+                        address_counter <= 0;
+                    end if;
+
+                when MAT1 =>
+                    -- Matrix 1 loading state logic
+                    if address_counter < 16 then
+                        DATA_REQUEST <= '0';
+                        if DIN_VALID = '1' then
+                            ram_wren <= '1';
+                            ram_address <= std_logic_vector(to_unsigned(address_counter, ADDRESS_BITS));
+                            ram_byteena <= (others => '1');
+                            ram_data <= DIN;
+                            cal_array(address_counter) <= DIN;
+                            address_counter <= address_counter + 1;
+                        end if;
+                    elsif address_counter = 16 then
+                        main_state <= MAT2;
+                        GOT_ALL_MATRICES <= '1';
+                        DATA_REQUEST <= '1';
+                    else
+                        ram_wren <= '0';
+                    end if;
+
+                when MAT2 =>
+                    -- Matrix 2 loading state logic
+                    DATA_REQUEST <= '0';
+                    if address_counter < 32 then
+                        if DIN_VALID = '1' then
+                            ram_wren <= '1';
+                            ram_address <= std_logic_vector(to_unsigned(address_counter, ADDRESS_BITS));
+                            ram_byteena <= (others => '1');
+                            ram_data <= DIN;
+                            cal_array(address_counter) <= DIN;
+                            address_counter <= address_counter + 1;
+                        end if;
+                    elsif START = '1' then
+                        DATA_REQUEST <= '0';
+                        cal_counter <= 0;
+                        address_counter <= 0;
+                        main_state <= CAL;
+                        ram_wren <= '0';
+                        cal_counter <= 0;
+                        ram_address <= std_logic_vector(to_unsigned(cal_counter, ADDRESS_BITS));
+                        cal_counter <= 1;
+                        GOT_ALL_MATRICES <= '1';
+                    else
+                        ram_wren <= '0';
+                    end if;
+
+                when CAL =>
+                    -- Calculation state logic
+                    address_counter <= 0;
+                    case cal_state is
+                        when cal_read =>
+                            -- Reading data for calculation
+                            mult_din_valid <= (others => '1');
+                            cal_counter <= 0;
+                            cal_state <= cal_calc;
+
+                        when cal_calc =>
+                            -- Performing the calculation
+                            if j < 20 then
+                                b(0) <= cal_array(j);
+                                b(1) <= cal_array(j + 4);
+                                b(2) <= cal_array(j + 8);
+                                b(3) <= cal_array(j + 12);
+                                if i < 12 then
+                                    a(0) <= cal_array(i);
+                                    a(1) <= cal_array(i + 1);
+                                    a(2) <= cal_array(i + 2);
+                                    a(3) <= cal_array(i + 3);
+                                    i <= i + 4;
+                                else
+                                    j <= j + 1;
+                                    i <= 0;
+                                end if;
+                            else
+                                mult_din_valid <= (others => '0');
+                                j <= 16;
+                            end if;
+                            cal_state <= cal_write;
+
+                        when cal_write =>
+                            -- Writing the result of the calculation
+                            if clock_count < 2 then
+                                clock_count <= clock_count + 1; 
+                            else
+                                clock_count <= 0;
+                                matrix(result_mat_place) <= std_logic_vector(
+                                    to_signed(
+                                        to_integer(signed(mult_result(0))) +
+                                        to_integer(signed(mult_result(1))) +
+                                        to_integer(signed(mult_result(2))) +
+                                        to_integer(signed(mult_result(3))),
+                                        17
+                                    )
+                                );
+                                if result_mat_place < 15 then
+                                    result_mat_place <= result_mat_place + 1;
+                                    cal_state <= cal_calc;
+                                elsif START = '1' then
+                                    result_mat_place <= 0;
+                                    main_state <= DISP;
+                                end if;
+                            end if;
+                    end case;
+
+                when DISP =>
+                    -- Display state logic
+                    --done <= '1';
+                    --final_ram_wren <= '0';
+                    --final_ram_address <= std_logic_vector(to_unsigned(DISPLAY_COUNT, ADDRESS_BITS));
+                    
+                    if DISPLAY = '1' then
+                        if DISPLAY_COUNT < 16 then
+                           matrix_index <= matrix(DISPLAY_COUNT);
+                            DISPLAY_COUNT <= DISPLAY_COUNT + 1;
+                        else
+                            DISPLAY_COUNT <= 0;
+                        end if;
+							elsif START = '1' then
+                        DISPLAY_COUNT <= 0;
+                        main_state <= IDL;
+                        done <= '0';
+                    end if;
+            end case;
+
+            -- Final result assignment
+            RESULT <= matrix_index;
+            RESULT_READY <= done;
+        end if;
+    end process;
+
+end Behavioral;
